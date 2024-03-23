@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ui/components/avatar_leading.dart';
+import 'package:ui/toasts/toasts.dart';
 
 void main() {
   runApp(const Savory());
@@ -10,7 +12,7 @@ class Savory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Savory',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
@@ -35,12 +37,16 @@ class _SavoryHomePageState extends State<SavoryHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Center(child: Text(widget.title)),
+        title: Text(widget.title),
+        leading: const AvatarLeading(icon: "https://www.viiper.fr/logo.jpg"),
       ),
-      body: Container(),
+      body: const Scaffold(
+        backgroundColor: Colors.black87,
+      ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.chat_bubble),
-        onPressed: () => throw UnimplementedError(),
+        child: const Icon(Icons.create),
+        onPressed: () => showSuccessToast(
+            context, 'Recipe writing', 'Recipe writing isn\'t implemented yet'),
       ),
     );
   }
